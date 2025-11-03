@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    { "id": "org1", "label": "Organization 1" },
+    { "id": "org2", "label": "Organization 2" }
+  ],
+  "edges": [
+    { "from": "org1", "to": "org2" }
+  ]
+}
