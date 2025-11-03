@@ -5,7 +5,7 @@
   <title>Your Organization Network</title>
   <!-- vis-network CSS & JS (preloaded from CDN) -->
   <link href="https://unpkg.com/vis-network/3.0.1/vis.css" rel="stylesheet" />
-  <script src="https://unpkg.com/vis-network/3.0.1/vis.js"></script>
+  <script src="https://unpkg.com/vis-network/3.0.1/vis.js" async></script>
   <!-- Custom styling for better look (predefined) -->
   <style>
     body {
@@ -46,25 +46,21 @@
   </div>
 
   <script>
-    // vis-network configuration (minimal setup)
-    const container = document.getElementById('network');
-    const data = {
-      nodes: [
-        {id: 'org1', label: 'Organization 1'},
-        {id: 'org2', label: 'Organization 2'},
-        // Add more organizations here (see step 3)
-      ],
-      edges: [
-        {from: 'org1', to: 'org2'},
-        // Add more connections here
-      ]
-    };
-
-    // Initialize the network
-    new vis.Network(container, data, {
-      interaction: true,
-      physics: true,
-      layout: { hierarchical: { enabled: true } }
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('network');
+      const data = {
+        nodes: [
+          { id: 1, label: "Organization A" },
+          { id: 2, label: "Organization B" }
+        ],
+        edges: [
+          { from: 1, to: 2 }
+        ]
+      };
+      new vis.Network(container, data, {
+        interaction: true,
+        layout: { hierarchical: { direction: 'top-to-bottom' } }
+      });
     });
   </script>
 </body>
