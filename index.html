@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Your Organization Network</title>
+  <!-- vis-network CSS & JS (preloaded from CDN) -->
+  <link href="https://unpkg.com/vis-network/3.0.1/vis.css" rel="stylesheet" />
+  <script src="https://unpkg.com/vis-network/3.0.1/vis.js"></script>
+  <!-- Custom styling for better look (predefined) -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .visualization {
+      height: 600px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .description {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e9f7fe;
+      border-radius: 8px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Organization Network</h1>
+    <div class="description">
+      <p>This visualization shows connections between your organizations. <strong>Update connections via the GitHub UI below</strong> (no code needed!).</p>
+    </div>
+    <div class="visualization" id="network"></div>
+  </div>
+
+  <script>
+    // vis-network configuration (minimal setup)
+    const container = document.getElementById('network');
+    const data = {
+      nodes: [
+        {id: 'org1', label: 'Organization 1'},
+        {id: 'org2', label: 'Organization 2'},
+        // Add more organizations here (see step 3)
+      ],
+      edges: [
+        {from: 'org1', to: 'org2'},
+        // Add more connections here
+      ]
+    };
+
+    // Initialize the network
+    new vis.Network(container, data, {
+      interaction: true,
+      physics: true,
+      layout: { hierarchical: { enabled: true } }
+    });
+  </script>
+</body>
+</html>
